@@ -1,0 +1,34 @@
+name: Manually Build
+on:
+  workflow_dispatch:
+    inputs:
+      expo-cli-username:
+         description: 'The Expo CLI username'
+         required: true
+         default: ''
+      expo-cli-password:
+         description: 'The Expo CLI password'
+         required: true
+         default: ''
+      platform:
+        description: 'android or ios'
+        required: true
+        default: ''
+jobs:
+  build:
+    name: Build
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [ 14.x ]
+    steps:
+      - name: build
+        uses: nearform/react-native-expo@main
+        with:
+          expo-cli-username: ${{ github.event.inputs.expo-cli-username }} 
+          expo-cli-password: ${{ github.event.inputs.expo-cli-password }}
+          platform: ${{ github.event.inputs.platform }}
+          node-version: ${{ matrix.node-version }}
+
+
