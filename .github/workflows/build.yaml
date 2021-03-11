@@ -24,7 +24,7 @@ jobs:
         node-version: [ 14.x ]
     steps:
       - name: build
-        uses: nearform/react-native-expo@main
+        uses: github-actions/react-native-expo
         with:
           expo-cli-username: ${{ github.event.inputs.expo-cli-username }} 
           expo-cli-password: ${{ github.event.inputs.expo-cli-password }}
