@@ -30,15 +30,15 @@ jobs:
           node-version: ${{ inputs.node-version }}
       - uses: expo/expo-github-action@v5
         with:
-          expo-version: ${{ inputs.expo-version }}
-          expo-username: ${{ inputs.expo-cli-userame }}
-          expo-password: ${{ inputs.expo-cli-password }}
+          expo-version: ${{ github.event.inputs.expo-version }} 
+          expo-username: ${{ github.event.inputs.expo-cli-username }} 
+          expo-password: ${{ github.event.inputs.expo-cli-password }} 
       - run: yarn install
       - name: Build (Android)
-        if: ${{ inputs.platform }} == "android"
-        run: expo build:${{ inputs.platform }} --type app-bundle
+        if: ${{ github.event.inputs.platform }}  == "android"
+        run: expo build:${{ github.event.inputs.platform }}  --type app-bundle
       - name: Build (IOS)
-        if: ${{ inputs.platform }} == "ios"
-        run: expo build:${{ inputs.platform }}
+        if: ${{ github.event.inputs.platform }}  == "ios"
+        run: expo build:${{ github.event.inputs.platform }} 
 
 
