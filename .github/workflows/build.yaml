@@ -24,8 +24,7 @@ jobs:
         node-version: [ 14.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: build
-        uses: ./github-actions/react-native-expo
+      - uses: ./github-actions/react-native-expo
         with:
           expo-cli-username: ${{ github.event.inputs.expo-cli-username }} 
           expo-cli-password: ${{ github.event.inputs.expo-cli-password }}
