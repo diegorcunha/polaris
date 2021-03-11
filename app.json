@@ -26,6 +26,12 @@
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
+    },
+    "ios": {
+      "bundleIdentifier": "com.apk.polaris"
+    },
+    "android": {
+      "package": "com.apk.polaris"
     }
   }
 }
