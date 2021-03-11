@@ -36,7 +36,7 @@ jobs:
       - run: yarn install
       - name: Build (Android)
         if: ${{ github.event.inputs.platform }}  == "android"
-        run: expo build:${{ github.event.inputs.platform }}  --type app-bundle
+        run: expo build:${{ github.event.inputs.platform }}  --type app-bundle --config ./app.json
       - name: Build (IOS)
         if: ${{ github.event.inputs.platform }}  == "ios"
         run: expo build:${{ github.event.inputs.platform }} 
