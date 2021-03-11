@@ -19,19 +19,15 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "useNextNotificationsApi": true
-    },
-    "web": {
-      "favicon": "./src/assets/favicon.png"
-    },
-    "ios": {
+      "supportsTablet": true,
       "bundleIdentifier": "com.apk.polaris"
     },
     "android": {
+      "useNextNotificationsApi": true,
       "package": "com.apk.polaris"
+    },
+    "web": {
+      "favicon": "./src/assets/favicon.png"
     }
   }
 }
