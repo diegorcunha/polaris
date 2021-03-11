@@ -24,11 +24,21 @@ jobs:
         node-version: [ 14.x ]
     steps:
       - uses: actions/checkout@v2
-      - uses: ./github-actions/react-native-expo
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          expo-cli-username: ${{ github.event.inputs.expo-cli-username }} 
-          expo-cli-password: ${{ github.event.inputs.expo-cli-password }}
-          platform: ${{ github.event.inputs.platform }}
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ inputs.node-version }}
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: ${{ inputs.expo-version }}
+          expo-username: ${{ inputs.expo-cli-userame }}
+          expo-password: ${{ inputs.expo-cli-password }}
+      - run: yarn install
+      - name: Build (Android)
+        if: ${{ inputs.platform }} == "android"
+        run: expo build:${{ inputs.platform }} --type app-bundle
+      - name: Build (IOS)
+        if: ${{ inputs.platform }} == "ios"
+        run: expo build:${{ inputs.platform }}
 
 
